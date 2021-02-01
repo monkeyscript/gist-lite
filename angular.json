@@ -120,10 +120,6 @@
               "devServerTarget": "gist-lite:serve:production"
             }
           }
-        },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {}
         }
       }
     }
