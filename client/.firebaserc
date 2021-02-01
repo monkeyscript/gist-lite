@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gist-lite": {
+      "hosting": {
+        "gist-lite": [
+          "gist-lite"
+        ]
+      }
+    }
+  }
+}
