@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" style="position:sticky; top:0; z-index: 999">
+
+  <span style="display: flex; flex-grow: 1;">
+    <ion-icon name="code-working" size="large" class="mr-2"></ion-icon>
+    Gist Lite
+    <span class="ml-3 text-secondary">|</span> 
+    <span class="ml-3 router-link" routerLink="/home">
+      All Gists
+    </span>
+    <span class="ml-3 router-link" routerLink="/my-gists">
+      My Gists
+    </span>
+  </span>
+
+  <button mat-raised-button color="accent" routerLink="/new-gist">
+    New Gist
+  </button>
+
+  <span class="router-link ml-3" (click)="authService.SignOut()">
+    <ion-icon name="log-out" size="large"></ion-icon>
+  </span>
+
+</mat-toolbar>

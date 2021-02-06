@@ -1,27 +1,28 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-  
-      <div class="authBlock">
-        <h3>Register User</h3>
-  
-        <div class="formGroup">
-          <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
-        </div>
-  
-        <div class="formGroup">
-          <input type="password" class="form-control" placeholder="Password" #userPwd required>
-        </div>
-  
-        <div class="formGroup">
-          <input type="button" class="btn btn-block btn-primary" value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)">
-        </div>
+  <div class="container">
+    <div class="keep-it-centered" style="min-height: 100vh;">
 
-      </div>
-  
-      <div class="redirectToLogin">
-        <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
-      </div>
+      <mat-card class="gist-card">
+        <mat-card-content style="text-align: center;">
+
+          <h2>Register User</h2>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" #userEmail required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #userPwd required>
+          </mat-form-field>
+
+          <button mat-raised-button color="accent" type="submit"
+            (click)="authService.SignUp(userEmail.value, userPwd.value)">
+            Sign Up
+          </button>
+        </mat-card-content>
+      </mat-card>
+
+
     </div>
-  
   </div>

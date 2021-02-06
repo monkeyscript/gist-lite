@@ -1,9 +1,29 @@
-<p>new-gist works!</p>
+<app-navbar></app-navbar>
 
-<form #newGistForm="ngForm">
+<div class="container my-4">
 
-    <input type="text" placeholder="gg" name="title" ngModel>
+  <mat-card class="gist-card">
+    <mat-card-content>
+      <mat-card-subtitle>New Gist</mat-card-subtitle>
 
-    <input type="submit" value="Submit" (click)="createGist(newGistForm)">
+      <form #newGistForm="ngForm">
 
-</form>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Title</mat-label>
+          <input matInput name="title" ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Code Snippet</mat-label>
+          <textarea matInput name="code" ngModel rows="16" required></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" type="submit" (click)="createGist(newGistForm)">
+          Create
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

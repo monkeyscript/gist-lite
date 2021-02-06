@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewGistComponent } from './components/new-gist/new-gist.component';
+import { MyGistsComponent } from './components/my-gists/my-gists.component';
 
 import { AuthGuard } from "./guards/auth.guard";
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'email-verification', component: VerifyEmailComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'new-gist', component: NewGistComponent, canActivate: [AuthGuard] },
+  { path: 'my-gists', component: MyGistsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

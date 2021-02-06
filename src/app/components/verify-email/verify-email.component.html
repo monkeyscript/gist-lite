@@ -1,21 +1,19 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-  
-      <div class="authBlock">
-        <h3>Thank You for Signing up</h3>
-  
-        <div class="formGroup" *ngIf="authService.userState as user">
-          <p class="text-center">Confirmation mail has been sent to <strong>{{user.email}}</strong>.</p>
-        </div>
-  
-        <div class="formGroup">
-          <button type="button" class="btn btn-block btn-success" (click)="authService.SendVerificationMail()">
+  <div class="container">
+    <div class="keep-it-centered" style="min-height: 100vh;">
+
+      <mat-card class="gist-card">
+        <mat-card-content style="text-align: center;">
+
+          <h2>Welcome to the party!</h2>
+          <p class="text-secondary" *ngIf="authService.userState as user">Confirmation mail has been sent to
+            <strong>{{user.email}}</strong>.</p>
+
+          <button mat-raised-button color="accent" (click)="authService.SendVerificationMail()">
             Resend Verification Email
           </button>
-        </div>
-      </div>
-  
-  
+        </mat-card-content>
+      </mat-card>
+
+
     </div>
   </div>
-  

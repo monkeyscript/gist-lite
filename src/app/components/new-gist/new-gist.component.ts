@@ -1,7 +1,20 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { DataService } from '../../services/data.service';
+import {
+  Component,
+  OnInit,
+  NgZone
+} from '@angular/core';
+import {
+  NgForm
+} from '@angular/forms';
+import {
+  Router
+} from '@angular/router';
+import {
+  DataService
+} from '../../services/data.service';
+import {
+  AuthService
+} from "../../services/auth.service";
 
 @Component({
   selector: 'app-new-gist',
@@ -13,24 +26,34 @@ export class NewGistComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
-    public ngZone: NgZone
-  ) { }
+    public ngZone: NgZone,
+    public authService: AuthService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  createGist(form:NgForm) {
-    console.log(form.value)
+  createGist(form: NgForm) {
 
-    this.dataService.createGist(form.value)
-         .then(res => {
-           console.log(res)
-          this.ngZone.run(() => {
-            this.router.navigate(['home']);
-          });
-             /*do something here....
-             maybe clear the form or give a success message*/
-         });
+    if (form.valid) {
+
+      let data: {
+        title: string,
+        email: string,
+        timestamp: number,
+        code: string
+      } = {
+        title: form.value.title,
+        code: form.value.code,
+        email: this.authService.userState.email,
+        timestamp: Math.floor((new Date()).getTime() / 1000)
+      }
+
+      this.dataService.createGist(data)
+        .then(res => {
+          this.router.navigate(['my-gists']);
+        });
+    }
+
   }
 
 }

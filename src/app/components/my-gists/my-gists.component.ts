@@ -5,32 +5,51 @@ import {
 import {
   DataService
 } from '../../services/data.service';
+import {
+  AuthService
+} from '../../services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-my-gists',
+  templateUrl: './my-gists.component.html',
+  styleUrls: ['./my-gists.component.css']
 })
-export class HomeComponent implements OnInit {
+export class MyGistsComponent implements OnInit {
 
   gists: any[]
 
   constructor(
     private dataService: DataService,
+    public authService: AuthService,
   ) {
     this.gists = [];
   }
 
   ngOnInit(): void {
-    this.loadGists()
+
+    let timer = setInterval(() => {
+      if(this.authService.userState != undefined) {
+        clearInterval(timer);
+        this.loadGists()
+      }
+    }, 1000);
+
   }
 
   loadGists() {
+
+    this.gists = [];
+
     this.dataService
       .loadGists().subscribe(res => {
-        this.gists = res
+        res.forEach(
+          (gist:any) => {
+            if(gist.payload.doc.data().email == this.authService.userState.email) {
+              this.gists.push(gist)
+            }
+          }
+        )
         this.formatList()
-
       });
   }
 
@@ -52,8 +71,13 @@ export class HomeComponent implements OnInit {
         gist.formattedTime = formattedTime;
 
         gist.code = gist.payload.doc.data().code
+
       }
     )
+  }
+
+  deleteGist(gist: any) {
+    this.dataService.deleteGist(gist);
   }
 
 }

@@ -2,7 +2,7 @@
 
 <div class="container py-3">
 
-  <p>All Gists</p>
+  <p>My Gists <span *ngIf="authService.userState as user">: {{user.email}}</span></p>
 
   <mat-card class="gist-card mb-3" *ngFor="let gist of gists">
     <mat-card-header>
@@ -10,7 +10,7 @@
         {{gist.payload.doc.data().title}}
       </mat-card-title>
       <mat-card-subtitle>
-        {{gist.formattedTime}} | {{gist.payload.doc.data().email}}
+        {{gist.formattedTime}} | {{gist.payload.doc.data().email}} | <ion-icon name="trash" (click)="deleteGist(gist)"></ion-icon>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
