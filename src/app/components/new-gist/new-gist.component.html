@@ -1,0 +1,9 @@
+<p>new-gist works!</p>
+
+<form #newGistForm="ngForm">
+
+    <input type="text" placeholder="gg" name="title" ngModel>
+
+    <input type="submit" value="Submit" (click)="createGist(newGistForm)">
+
+</form>

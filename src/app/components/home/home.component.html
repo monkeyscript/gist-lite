@@ -1,0 +1,33 @@
+<div class="container mt-5" style="max-width: 600px">
+
+    <div class="row" *ngIf="authService.userState as user">
+      <div class="media">
+        <img class="align-self-start mr-5 img-thumbnail rounded-circle"
+          src="{{(user.photoURL) ? user.photoURL : '/assets/dummy.jpg'}}" alt="{{user.displayName}}">
+        <div class="media-body">
+          <h2>Hi: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h2>
+          <p>User ID: <strong>{{user.uid}}</strong></p>
+          <p>Email: <strong>{{user.email}}</strong></p>
+        </div>
+      </div>
+    </div>
+ 
+    <a class="btn btn-block btn-primary" (click)="authService.SignOut()">
+      Sign Out
+    </a>
+
+    <a class="btn btn-block btn-primary" routerLink="/new-gist">
+        New Gist
+      </a>
+
+    <hr>
+
+    <tbody>
+      <tr *ngFor="let gist of gists">
+         <td>{{ gist.payload.doc.data()|json }}</td>
+         <td>{{ gist.payload.doc.data()|json }}</td>
+         <td><a (click)="deleteGist(gist)">Del</a></td>
+      </tr>
+      </tbody>
+ 
+  </div>
