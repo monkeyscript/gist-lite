@@ -20,4 +20,13 @@
     </mat-card-content>
   </mat-card>
 
+  <div *ngIf="gists.length==0">
+    <div class="my-5" style="text-align: center;">
+      <img src="assets/empty.svg" style="max-width: 32%;" alt="Empty">
+      <p class="text-secondary">
+        Oops! Looks like you're the first one here.
+      </p>
+    </div>
+  </div>
+
 </div>

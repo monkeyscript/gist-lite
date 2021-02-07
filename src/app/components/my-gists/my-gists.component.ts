@@ -18,6 +18,8 @@ export class MyGistsComponent implements OnInit {
 
   gists: any[]
 
+  isEmpty: boolean=true;
+
   constructor(
     private dataService: DataService,
     public authService: AuthService,
@@ -32,7 +34,7 @@ export class MyGistsComponent implements OnInit {
         clearInterval(timer);
         this.loadGists()
       }
-    }, 1000);
+    }, 100);
 
   }
 
@@ -65,6 +67,10 @@ export class MyGistsComponent implements OnInit {
         gist.formattedTime = formattedTime;
 
         gist.code = gist.payload.doc.data().code
+
+        if(gist.payload.doc.data().email == this.authService.userState.email) {
+          this.isEmpty=false;
+        }
 
       }
     )

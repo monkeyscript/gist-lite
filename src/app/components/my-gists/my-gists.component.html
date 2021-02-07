@@ -25,4 +25,13 @@
     </mat-card>
   </ng-container>
 
+  <div *ngIf="isEmpty==true">
+    <div class="my-5" style="text-align: center;">
+      <img src="assets/empty.svg" style="max-width: 32%;" alt="Empty">
+      <p class="text-secondary">
+        Oops! Nothing in your account.
+      </p>
+    </div>
+  </div>
+
 </div>
