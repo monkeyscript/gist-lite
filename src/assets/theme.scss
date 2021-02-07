@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: (
+    Main:#110e0e,
+    Light:#373535,
+    Dark: #000000,
+    contrast: (
+        Main: #fcfcfc,
+        Light: #110e0e,
+        Dark: #fcfcfc
+));
+
+$accent: (
+    Main:#fec302,
+    Light:#fff54f,
+    Dark: #c69300,
+    contrast: (
+        Main: #110e0e,
+        Light: #fcfcfc,
+        Dark: #110e0e
+));
+
+$warn:$mat-red;
+
+$candy-app-primary: mat-palette($primary, Main, Light, Dark);
+$candy-app-accent: mat-palette($accent, Main, Light, Dark);
+$candy-app-warn: mat-palette($warn, A200, A400, A700);
+
+$candy-app-theme: mat-light-theme((color: (primary: $candy-app-primary,
+      accent: $candy-app-accent,
+      warn: $candy-app-warn,
+    )));
+
+@include angular-material-theme($candy-app-theme);

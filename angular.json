@@ -28,9 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
-              "src/assets/aether.css"
+              "src/assets/aether.css",
+              "src/assets/theme.scss"
             ],
             "scripts": []
           },

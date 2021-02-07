@@ -1,7 +1,7 @@
-<mat-toolbar color="primary" style="position:sticky; top:0; z-index: 999">
+<mat-toolbar color="primary" style="position:sticky; top:0; z-index: 999; box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);">
 
   <span style="display: flex; flex-grow: 1;">
-    <ion-icon name="code-working" size="large" class="mr-2"></ion-icon>
+    <img src="assets/logo.svg" alt="Logo" style="max-height: 32px;" class="mx-2">
     Gist Lite
     <span class="ml-3 text-secondary">|</span> 
     <span class="ml-3 router-link" routerLink="/home">
@@ -16,8 +16,8 @@
     New Gist
   </button>
 
-  <span class="router-link ml-3" (click)="authService.SignOut()">
-    <ion-icon name="log-out" size="large"></ion-icon>
+  <span class="router-link ml-3 d-flex" (click)="authService.SignOut()">
+    <ion-icon name="log-out" size="large" title="Logout"></ion-icon>
   </span>
 
 </mat-toolbar>

@@ -42,13 +42,7 @@ export class MyGistsComponent implements OnInit {
 
     this.dataService
       .loadGists().subscribe(res => {
-        res.forEach(
-          (gist:any) => {
-            if(gist.payload.doc.data().email == this.authService.userState.email) {
-              this.gists.push(gist)
-            }
-          }
-        )
+        this.gists = res;
         this.formatList()
       });
   }

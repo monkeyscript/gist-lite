@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 
-<div class="container my-4">
+<div class="container py-3">
+
+  <p class="text-secondary">New Gist</p>
 
   <mat-card class="gist-card">
     <mat-card-content>
-      <mat-card-subtitle>New Gist</mat-card-subtitle>
 
       <form #newGistForm="ngForm">
 
@@ -18,7 +19,7 @@
           <textarea matInput name="code" ngModel rows="16" required></textarea>
         </mat-form-field>
 
-        <button mat-raised-button color="accent" type="submit" (click)="createGist(newGistForm)">
+        <button mat-raised-button color="accent" class="mb-3" type="submit" (click)="createGist(newGistForm)">
           Create
         </button>
 

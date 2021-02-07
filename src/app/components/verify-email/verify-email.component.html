@@ -4,11 +4,13 @@
       <mat-card class="gist-card">
         <mat-card-content style="text-align: center;">
 
+        <img src="assets/logo.svg" alt="Logo" style="max-height: 64px;" class="m-3">
+
           <h2>Welcome to the party!</h2>
           <p class="text-secondary" *ngIf="authService.userState as user">Confirmation mail has been sent to
             <strong>{{user.email}}</strong>.</p>
 
-          <button mat-raised-button color="accent" (click)="authService.SendVerificationMail()">
+          <button mat-raised-button color="accent" class="mb-3" (click)="authService.SendVerificationMail()">
             Resend Verification Email
           </button>
         </mat-card-content>

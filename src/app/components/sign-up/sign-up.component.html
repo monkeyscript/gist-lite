@@ -4,6 +4,8 @@
       <mat-card class="gist-card">
         <mat-card-content style="text-align: center;">
 
+        <img src="assets/logo.svg" alt="Logo" style="max-height: 64px;" class="m-3">
+
           <h2>Register User</h2>
 
           <mat-form-field appearance="outline" class="w-100">
@@ -16,8 +18,7 @@
             <input matInput type="password" #userPwd required>
           </mat-form-field>
 
-          <button mat-raised-button color="accent" type="submit"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)">
+          <button mat-raised-button color="accent" type="submit" class="mb-3" (click)="authService.SignUp(userEmail.value, userPwd.value)">
             Sign Up
           </button>
         </mat-card-content>

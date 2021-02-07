@@ -2,22 +2,27 @@
 
 <div class="container py-3">
 
-  <p>My Gists <span *ngIf="authService.userState as user">: {{user.email}}</span></p>
+  <p class="text-secondary">My Gists <span *ngIf="authService.userState as user">: {{user.email}}</span></p>
 
-  <mat-card class="gist-card mb-3" *ngFor="let gist of gists">
-    <mat-card-header>
-      <mat-card-title>
-        {{gist.payload.doc.data().title}}
-      </mat-card-title>
-      <mat-card-subtitle>
-        {{gist.formattedTime}} | {{gist.payload.doc.data().email}} | <ion-icon name="trash" (click)="deleteGist(gist)"></ion-icon>
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <pre class="d-flex">
-        <code [highlight]="gist.code" class="gist-code w-100"></code>
-      </pre>
-    </mat-card-content>
-  </mat-card>
+  <ng-container *ngFor="let gist of gists">
+    <mat-card class="gist-card mb-3" *ngIf="gist.payload.doc.data().email == authService.userState.email">
+      <mat-card-header>
+        <mat-card-title>
+          {{gist.payload.doc.data().title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div class="keep-it-centered">
+            {{gist.formattedTime}} | {{gist.payload.doc.data().email}} | 
+            <ion-icon name="trash" class="router-link ml-1" style="font-size: 1rem;" (click)="deleteGist(gist)" title="Remove"></ion-icon>
+          </div>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <pre class="d-flex">
+          <code [highlight]="gist.code" class="gist-code w-100"></code>
+        </pre>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
 
 </div>

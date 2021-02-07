@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
       .loadGists().subscribe(res => {
         this.gists = res
         this.formatList()
-
       });
   }
 

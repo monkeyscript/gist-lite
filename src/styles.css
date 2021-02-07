@@ -8,12 +8,17 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fcfcfc;
+}
+
+* {
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .gist-code {
   border: 1px solid lightgrey;
   border-radius: 4px;
+  font-family: monospace !important;
 }
 
 .d-flex {
