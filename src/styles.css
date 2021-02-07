@@ -48,3 +48,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 1024px) {
+  .show-lg {
+      display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .show-sm {
+      display: none !important;
+  }
+}
