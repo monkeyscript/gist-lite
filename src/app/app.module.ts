@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -44,12 +45,15 @@ import { MyGistsComponent } from './components/my-gists/my-gists.component';
     MaterialModule,
     HighlightModule
   ],
-  providers: [{
-    provide: HIGHLIGHT_OPTIONS,
-    useValue: {
-      fullLibraryLoader: () => import('highlight.js')
-    }
-  }],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js')
+      }
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
