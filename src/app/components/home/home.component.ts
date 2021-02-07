@@ -22,9 +22,15 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // Load all gists
     this.loadGists()
+
   }
 
+  //
+  // Load the list of all gists
+  //
   loadGists() {
     this.dataService
       .loadGists().subscribe(res => {
@@ -33,12 +39,17 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  //
+  // Sort and format the list
+  //
   formatList() {
 
+    // Sort the list based on timestamp 
     this.gists.sort((a, b) => {
       return b.payload.doc.data().timestamp - a.payload.doc.data().timestamp;
     });
 
+    // Iterate over and format time
     this.gists.forEach(
       gist => {
         var date = new Date(gist.payload.doc.data().timestamp * 1000);

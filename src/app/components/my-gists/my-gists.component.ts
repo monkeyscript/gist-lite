@@ -29,6 +29,8 @@ export class MyGistsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // Run a loop to check if the user state is ready or not 
+    // Once readSync, load the list of gists 
     let timer = setInterval(() => {
       if(this.authService.userState != undefined) {
         clearInterval(timer);
@@ -38,9 +40,10 @@ export class MyGistsComponent implements OnInit {
 
   }
 
+  //
+  // Load the list
+  //
   loadGists() {
-
-    this.gists = [];
 
     this.dataService
       .loadGists().subscribe(res => {
@@ -49,12 +52,17 @@ export class MyGistsComponent implements OnInit {
       });
   }
 
+  //
+  // Sort and format the list
+  //
   formatList() {
 
+    // Sort the list based on timestamp
     this.gists.sort((a, b) => {
       return b.payload.doc.data().timestamp - a.payload.doc.data().timestamp;
     });
 
+    // Iterate and format time 
     this.gists.forEach(
       gist => {
         var date = new Date(gist.payload.doc.data().timestamp * 1000);
@@ -68,6 +76,7 @@ export class MyGistsComponent implements OnInit {
 
         gist.code = gist.payload.doc.data().code
 
+        // If at least one entry is there for current user, set flag to disable image 
         if(gist.payload.doc.data().email == this.authService.userState.email) {
           this.isEmpty=false;
         }
@@ -76,6 +85,9 @@ export class MyGistsComponent implements OnInit {
     )
   }
 
+  //
+  // Remove a gist
+  //
   deleteGist(gist: any) {
     this.dataService.deleteGist(gist);
   }

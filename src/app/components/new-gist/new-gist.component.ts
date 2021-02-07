@@ -32,10 +32,15 @@ export class NewGistComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //
+  // Create a gist
+  //
   createGist(form: NgForm) {
 
+    // Check if the form is valid
     if (form.valid) {
 
+      // Create payload 
       let data: {
         title: string,
         email: string,

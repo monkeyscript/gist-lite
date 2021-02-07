@@ -14,6 +14,9 @@ export class DataService {
     private firestore: AngularFirestore
   ) {}
 
+  //
+  // Create a new gist 
+  //
   createGist(data: any) {
     return new Promise < any > ((resolve, reject) => {
       this.firestore
@@ -23,21 +26,16 @@ export class DataService {
     });
   }
 
+  //
+  // Load all gists 
+  //
   loadGists() {
     return this.firestore.collection("gists").snapshotChanges();
   }
 
-  updateGist(data: any) {
-    return this.firestore
-              .collection("gists")
-              .doc(data.payload.doc.id)
-              .set({
-                completed: true
-              }, {
-                merge: true
-              });
-  }
-
+  //
+  // Remove a gist 
+  //
   deleteGist(data: any) {
     return this.firestore
               .collection("gists")

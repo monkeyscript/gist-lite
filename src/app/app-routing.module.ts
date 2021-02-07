@@ -12,7 +12,7 @@ import { MyGistsComponent } from './components/my-gists/my-gists.component';
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
