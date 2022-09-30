@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {
   AngularFirestore
-} from '@angular/fire/firestore';
+} from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
